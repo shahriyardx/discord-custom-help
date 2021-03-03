@@ -23,7 +23,7 @@ class MyHelpCommand(commands.HelpCommand):
         embed = discord.Embed(
             color=discord.Color.blurple(),
             timestamp=ctx.message.created_at,
-            description=f"Use {self.clean_prefix}help <Category> to get help on a category\n",
+            description=f"Use `{self.clean_prefix}help <Category>` to get help on a category\n\n",
         )
 
         for cog in cogs:
@@ -37,12 +37,10 @@ class MyHelpCommand(commands.HelpCommand):
                 ]
 
             if len(cog_commands) > 0:
-                if cog.description:
-                    cog_help = cog.description
-                else:
-                    cog_help = "No description provided"
+                cog_help = cog.description or "No description provided"
+                cog_help += "\n"
 
-                embed.description += f"**__{cog.qualified_name}__** \n`{cog_help}` \n"
+                embed.add_field(name=cog.qualified_name, value=cog_help)
 
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         await ctx.send(embed=embed)
@@ -77,7 +75,7 @@ class MyHelpCommand(commands.HelpCommand):
         embed.description += f"{cog_help}\nUse `{self.clean_prefix}help <command>` to get help on a command.\n\n**Commands :** \n"
 
         for command in shown_commands:
-            embed.description += f"▪︎{pre}{command.qualified_name} "
+            embed.description += f"▪︎ {pre}{command.qualified_name} "
             if command.signature:
                 embed.description += f"{command.signature} \n"
             else:
@@ -149,9 +147,9 @@ class MyHelpCommand(commands.HelpCommand):
 
         for command in group_commands:
             if command.signature:
-                command_help = f"▪︎{pre}{command.qualified_name} {command.signature} \n"
+                command_help = f"▪︎ {pre}{command.qualified_name} {command.signature} \n"
             else:
-                command_help = f"▪︎{pre}{command.qualified_name} \n"
+                command_help = f"▪︎ {pre}{command.qualified_name} \n"
 
             embed.description += command_help
 
