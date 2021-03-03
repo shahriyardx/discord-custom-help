@@ -13,7 +13,7 @@ classifiers = [
 
 setup(
     name="discord-custom-help",
-    version="0.0.3",
+    version="0.0.4",
     description="A help cog for discord bots",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
