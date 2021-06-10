@@ -1,8 +1,20 @@
+import os
 import discord
 from discord.ext import commands
 
 
 class MyHelpCommand(commands.HelpCommand):
+    def __init__(self, **options):
+        super().__init__(**options)
+        try:
+            color = os.environ['DCH_COLOR']
+            color = color.replace('#', '')
+            color = int(color, 16)
+            self.color = discord.Color(color)
+        except:
+            self.color = discord.Color.blurple()
+
+
     async def send_bot_help(self, mapping):
         ctx = self.context
 
@@ -21,7 +33,7 @@ class MyHelpCommand(commands.HelpCommand):
                     cogs.append(cog)
 
         embed = discord.Embed(
-            color=discord.Color.blurple(),
+            color=self.color,
             timestamp=ctx.message.created_at,
             description=f"Use `{self.clean_prefix}help <Category>` to get help on a category\n\n",
         )
@@ -51,7 +63,7 @@ class MyHelpCommand(commands.HelpCommand):
         pre = self.clean_prefix
 
         embed = discord.Embed(
-            color=discord.Color.gold(), timestamp=ctx.message.created_at, description=""
+            color=self.color, timestamp=ctx.message.created_at, description=""
         )
 
         if await ctx.bot.is_owner(ctx.author):
@@ -89,7 +101,7 @@ class MyHelpCommand(commands.HelpCommand):
         ctx = self.context
 
         embed = discord.Embed(
-            color=discord.Color.green(),
+            color=self.color,
             timestamp=ctx.message.created_at,
             description="",
         )
@@ -120,7 +132,7 @@ class MyHelpCommand(commands.HelpCommand):
         pre = self.clean_prefix
 
         embed = discord.Embed(
-            color=discord.Color.blurple(), timestamp=ctx.message.created_at
+            color=self.color, timestamp=ctx.message.created_at
         )
 
         if group.signature:

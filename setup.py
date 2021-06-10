@@ -13,9 +13,9 @@ classifiers = [
 
 setup(
     name="discord-custom-help",
-    version="0.0.4",
+    version="0.0.6",
     description="A help cog for discord bots",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8", mode='r').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/shahprog/discord-custom-help/",
     author="Md Shahriyar Alam",
