@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 # See note below for more information about classifiers
 classifiers = [
@@ -13,9 +13,9 @@ classifiers = [
 
 setup(
     name="discord-custom-help",
-    version="0.0.6",
+    version="0.0.7",
     description="A help cog for discord bots",
-    long_description=open("README.md", encoding="utf-8", mode='r').read(),
+    long_description=open("README.md", encoding="utf-8", mode="r").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/shahprog/discord-custom-help/",
     author="Md Shahriyar Alam",
@@ -24,8 +24,6 @@ setup(
     classifiers=classifiers,
     keywords="discord-custom-help dch discord-help",
     packages=find_packages(),
-    install_requires=[
-        "discord.py",
-    ],
+    install_requires=[],
     include_package_data=True,
 )
