@@ -1,8 +1,8 @@
 import os
 
 if os.getenv("DISCORD_LIB") == "disnake":
-    import discord as discord
-    from discord.ext import commands
+    import disnake as discord
+    from disnake.ext import commands
 else:
     import discord
     from discord.ext import commands
