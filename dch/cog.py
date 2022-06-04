@@ -67,7 +67,7 @@ class MyHelpCommand(commands.HelpCommand):
 
                 embed.add_field(name=cog.qualified_name, value=cog_help)
 
-        embed.set_thumbnail(url=ctx.bot.user.display_avatar.url)
+        embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     # Main Help
@@ -111,7 +111,7 @@ class MyHelpCommand(commands.HelpCommand):
             else:
                 embed.description += "\n"
 
-        embed.set_thumbnail(url=ctx.bot.user.display_avatar.url)
+        embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     # Command Help
@@ -141,7 +141,7 @@ class MyHelpCommand(commands.HelpCommand):
         if len(command.aliases) > 0:
             embed.description += "\nAliases : " + ", ".join(command.aliases)
 
-        embed.set_thumbnail(url=ctx.bot.user.display_avatar.url)
+        embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
     # Group Help
@@ -188,7 +188,7 @@ class MyHelpCommand(commands.HelpCommand):
 
             embed.description += command_help
 
-        embed.set_thumbnail(url=ctx.bot.user.display_avatar.url)
+        embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         await ctx.send(embed=embed)
 
 
